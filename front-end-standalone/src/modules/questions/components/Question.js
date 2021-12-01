@@ -24,7 +24,6 @@ export const Question = () => {
   return (
     <Container>
       <Typography variant="h1">{question.text}</Typography>
-      <Typography variant="h3">Asked by {question.user}</Typography>
       <Upvotes question={question} />
       <hr  />
       <Answers questionId={question.id} />

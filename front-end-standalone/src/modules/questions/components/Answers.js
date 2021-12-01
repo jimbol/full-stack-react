@@ -20,7 +20,6 @@ export const Answers = ({ questionId }) => {
         answers.map((answer) => (
           <Card style={{ padding: 12 }} key ={answer.id}>
             <Typography variant="h5">{answer.text}</Typography>
-            <Typography variant="body"><em>-{answer.user}</em></Typography>
           </Card>
         ))
       }

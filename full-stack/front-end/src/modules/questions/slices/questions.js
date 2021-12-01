@@ -39,18 +39,9 @@ export const questionsSlice = createSlice({
     },
     removeQuestion,
     upvote: (state, action) => {
-      const { questionId, user } = action.payload;
+      const { questionId } = action.payload;
 
-      const upvotes = state.items[questionId].upvotes || {};
-      upvotes[user] = true;
-      state.items[questionId].upvotes = upvotes;
-    },
-    removeUpvote: (state, action) => {
-      const { questionId, user } = action.payload;
-
-      const upvotes = state.items[questionId].upvotes || {};
-      delete upvotes[user];
-
+      const upvotes = (state.items[questionId].upvotes || 0) + 1;
       state.items[questionId].upvotes = upvotes;
     },
   },

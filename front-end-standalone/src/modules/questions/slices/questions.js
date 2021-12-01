@@ -5,18 +5,14 @@ const initialState = {
     1: {
       id: 1,
       text: 'How tall is Mt. Everest?',
-      user: 'karen',
-      upvotes: {},
     },
     2: {
       id: 2,
       text: 'When was javascript created?',
-      user: 'yuetong',
     },
     3: {
       id: 3,
       text: 'Who am I?',
-      user: 'jim',
     },
   },
 };
@@ -44,18 +40,9 @@ export const questionsSlice = createSlice({
       delete state.items[action.payload.id];
     },
     upvote: (state, action) => {
-      const { questionId, user } = action.payload;
+      const { questionId } = action.payload;
 
-      const upvotes = state.items[questionId].upvotes || {};
-      upvotes[user] = true;
-      state.items[questionId].upvotes = upvotes;
-    },
-    removeUpvote: (state, action) => {
-      const { questionId, user } = action.payload;
-
-      const upvotes = state.items[questionId].upvotes || {};
-      delete upvotes[user];
-
+      const upvotes = (state.items[questionId].upvotes || 0) + 1;
       state.items[questionId].upvotes = upvotes;
     },
   },

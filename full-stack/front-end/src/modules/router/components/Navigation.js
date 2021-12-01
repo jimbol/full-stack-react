@@ -1,6 +1,5 @@
 import { Typography, Toolbar, Button } from "@mui/material";
 import { useNavigate } from "react-router";
-import { UserSelect } from "../../users";
 
 export const Navigation = () => {
   const navigate = useNavigate();
@@ -19,10 +18,6 @@ export const Navigation = () => {
         <i>Q&A World</i>
       </Typography>
       <div>
-        <UserSelect />
-        <Button
-          onClick={() => navigate('/my-questions')}
-        >My Questions</Button>
         <Button
           onClick={() => navigate('/create-question')}
           variant="contained"
