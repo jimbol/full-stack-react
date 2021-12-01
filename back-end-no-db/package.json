@@ -1,0 +1,15 @@
+{
+  "name": "back-end-no-db",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start-dev": "nodemon --es-module-specifier-resolution=node src/index.js",
+    "start": "node --es-module-specifier-resolution=node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
+  }
+}
