@@ -1,25 +1,19 @@
 import { Typography, TextField, Button, Container } from "@mui/material";
 import { useState } from "react";
-import { useDispatch } from 'react-redux';
-import { v4 as uuid } from 'uuid';
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
-import { questionActions } from '../slices';
+import { createQuestion } from "../requests/createQuestion";
 
 export const CreateQuestion = () => {
-  const [newQuestion, setNewQuestion] = useState('');
+  const [questionText, setQuestionText] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const saveQuestion = () => {
-    const id = uuid();
-    dispatch(questionActions.addQuestions([{
-      id,
-      text: newQuestion,
-    }]));
-    setNewQuestion('');
-    navigate(`/question/${id}`);
-  }
+    dispatch(createQuestion({ questionText, navigate }));
+    setQuestionText('');
+  };
 
   return (
     <Container style={{ display: 'flex', flexDirection: 'column' }}>
@@ -27,8 +21,8 @@ export const CreateQuestion = () => {
       <TextField
         multiline
         rows={4}
-        value={newQuestion}
-        onChange={(e) => setNewQuestion(e.target.value || '')}
+        value={questionText}
+        onChange={(e) => setQuestionText(e.target.value || '')}
       />
       <Button
         onClick={() => saveQuestion()}

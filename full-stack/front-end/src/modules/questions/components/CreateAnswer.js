@@ -2,8 +2,8 @@ import { TextField, Button } from "@mui/material";
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
+import { updateQuestion } from "../requests/updateQuestion";
 
-import { questionActions } from '../slices';
 import { getQuestion } from "./selectors";
 
 export const CreateAnswer = ({ questionId }) => {
@@ -18,9 +18,12 @@ export const CreateAnswer = ({ questionId }) => {
       text: newAnswer,
     };
 
-    dispatch(questionActions.addAnswer({
-      questionId: question.id,
-      answer,
+    dispatch(updateQuestion({
+      ...question,
+      answers: {
+        ...question.answers,
+        [id]: answer,
+      },
     }));
 
     setNewAnswer('');

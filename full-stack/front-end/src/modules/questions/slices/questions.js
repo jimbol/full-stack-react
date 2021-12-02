@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { updateQuestion } from "../requests/updateQuestion";
 import { deleteQuestion } from "../requests/deleteQuestion";
+import { fetchQuestion } from "../requests/fetchQuestion";
 import { fetchQuestions } from "../requests/fetchQuestions";
 
 const initialState = {
@@ -46,6 +48,12 @@ export const questionsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(updateQuestion.fulfilled, addQuestions);
+    builder.addCase(updateQuestion.pending, setLoading);
+
+    builder.addCase(fetchQuestion.fulfilled, addQuestions);
+    builder.addCase(fetchQuestion.pending, setLoading);
+
     builder.addCase(fetchQuestions.fulfilled, addQuestions);
     builder.addCase(fetchQuestions.pending, setLoading);
 

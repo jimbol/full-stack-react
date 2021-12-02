@@ -5,12 +5,13 @@ export const createQuestion = {
   path: '/question',
   handler: async (req, res) => {
     const newQuestion = req.body.question;
-    await Question.insertOne(newQuestion);
+    const { insertedId } = await Question.insertOne(newQuestion);
 
     const questions = await Question.getAll();
     res.status(200);
     res.send({
       questions,
+      insertedId,
     });
   },
 };

@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { questionActions } from "../slices";
+import { updateQuestion } from "../requests/updateQuestion";
 
 export const Upvotes = ({ question }) => {
   const dispatch = useDispatch();
@@ -9,8 +9,10 @@ export const Upvotes = ({ question }) => {
     <Button
       onClick={(e) => {
         e.stopPropagation();
-        dispatch(questionActions.upvote({
-          questionId: question.id,
+
+        dispatch(updateQuestion({
+          ...question,
+          upvotes: (question.upvotes || 0) + 1,
         }));
       }}
     >▲ {question.upvotes || 0}</Button>

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router";
 import { deleteQuestion } from "../requests/deleteQuestion";
 import { Answers } from "./Answers";
 import { Upvotes } from "./Upvotes";
+import { fetchQuestion } from "../requests/fetchQuestion";
+import { useEffect, useState } from "react";
 
 const getQuestion = (questionId) => (state) => {
   return state.questions.items[questionId];
@@ -16,6 +18,13 @@ export const Question = () => {
   const { questionId } = params;
   const question = useSelector(getQuestion(questionId));
   const navigate = useNavigate();
+  const [initialized, setInitialization] = useState(false);
+
+  useEffect(() => {
+    if (initialized) return false;
+    dispatch(fetchQuestion(questionId));
+    setInitialization(true);
+  }, [dispatch, initialized, setInitialization, questionId]);
 
   if (!question) {
     return (
