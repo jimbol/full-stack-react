@@ -6,4 +6,4 @@ node --version;
 npm install --global yarn
 yarn add -g nodemon;
 cd ./back-end && yarn install;
-cd ./front-end && yarn install;
+cd ../front-end && yarn install;
