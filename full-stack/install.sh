@@ -5,5 +5,5 @@ nvm install node; # or install specific version. nvm install 16; nvm use 16;
 node --version;
 npm install --global yarn
 yarn add -g nodemon;
-yarn install ./back-end;
-yarn install ./front-end;
+yarn install --modules-folder ./back-end;
+yarn install --modules-folder ./front-end;
