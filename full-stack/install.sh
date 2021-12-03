@@ -1,8 +1,9 @@
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash;
 source ~/.bashrc;
 nvm --version;
-nvm install node;
+nvm install node; # or install specific version. nvm install 16; nvm use 16;
 node --version;
-npm install -g nodemon;
-npm install ./back-end;
-npm install ./front-end;
+npm install --global yarn
+yarn add -g nodemon;
+yarn install ./back-end;
+yarn install ./front-end;
