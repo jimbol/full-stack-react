@@ -4,3 +4,7 @@ nvm --version;
 nvm install node;
 node --version;
 npm install -g nodemon;
+cd full-stack/back-end;
+npm install;
+cd ../front-end;
+npm install;
