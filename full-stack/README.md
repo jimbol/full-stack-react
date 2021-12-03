@@ -1,4 +1,10 @@
+## Set up Netlify
+Netlify is a dead simple way of deploying static sites.
+
+Open spotify, connect your repository, configue the build, and its ready!
+
 ## Set up EC2 Hosting
+This is where we will host our API and database
 ### Start launching
 
 - In AWS, go the the EC2 dashboard.
@@ -31,18 +37,9 @@ ssh -i "~/.ssh/fullstackclass.pem" ec2-user@18.224.52.118
 - You're in!
 
 ### Install Dependencies
-**Git**
-
-- First install git `sudo yum install git -y`
-- Confirm its installed `git --version`
-
-**Node**
-- Then nvm `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash`
-- Reload .bashrc to provide access to nvm `source ~/.bashrc`
-- Confirm its installed `nvm --version`
-- Install Node `nvm install node`
-- Check that Node is running `node --version`
-- Install nodemon `npm install -g nodemon`
-**Start Application**
-- Clone our repo `git clone git@github.com:jimbol/full-stack-react.git`
-
+Run the install script. In this repo, that lives inside the `full-stack` folder.
+```
+cd full-stack;
+bash install;
+```
+This installs Git, Node, and Yarn, as well as installing our dependencies.
