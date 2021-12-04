@@ -47,5 +47,5 @@ This installs Git, Node, and Yarn, as well as installing our dependencies.
 ### Starting
 
 ```
-pm2 start "port=8080 node --es-module-specifier-resolution=node src/index.js"
+pm2 start "port=80 node --es-module-specifier-resolution=node src/index.js"
 ```
