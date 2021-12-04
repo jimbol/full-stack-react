@@ -17,6 +17,8 @@ Object.values(routes).forEach((route) => {
   app[route.method](route.path, route.handler);
 });
 
+app.get('/', (req, res) => res.send({ succss: true }));
+
 const start = async () => {
   await db.connect(DB_URL);
   app.listen(port);

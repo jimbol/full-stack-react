@@ -5,4 +5,5 @@ nvm --version;
 nvm install node; # or install specific version. nvm install 16; nvm use 16;
 node --version;
 npm install --global yarn
+npm i -g pm2
 yarn install;

@@ -39,7 +39,13 @@ ssh -i "~/.ssh/fullstackclass.pem" ec2-user@18.224.52.118
 ### Install Dependencies
 Run the install script. In this repo, that lives inside the `full-stack` folder.
 ```
-cd full-stack;
-bash install;
+cd full-stack/back-end;
+bash install.sh;
 ```
 This installs Git, Node, and Yarn, as well as installing our dependencies.
+
+### Starting
+
+```
+pm2 start "port=8080 node --es-module-specifier-resolution=node src/index.js"
+```
