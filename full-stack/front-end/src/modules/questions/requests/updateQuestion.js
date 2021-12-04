@@ -13,5 +13,4 @@ export const updateQuestion = createAsyncThunk(
       delete question._id;
       return question;
     });
-  }
-);
+  });

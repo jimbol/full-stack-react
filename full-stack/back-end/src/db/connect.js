@@ -7,14 +7,19 @@ export const connect = async (url) => {
     return dbClient;
   }
 
-  const client = await MongoClient.connect(url, {
-    useNewUrlParser: true, // new url parser
-    useUnifiedTopology: true, // new connection engine
-    maxPoolSize: 10 // how many connections can be made
-  });
+  try {
+    console.log(`Connecting to mongo db at ${url}`);
+    const client = await MongoClient.connect(url, {
+      useNewUrlParser: true, // new url parser
+      useUnifiedTopology: true, // new connection engine
+      maxPoolSize: 10 // how many connections can be made
+    });
+    dbClient = client;
+    return dbClient;
+  } catch(e) {
+    console.log(e);
+  }
 
-  dbClient = client;
-  return dbClient;
 };
 
 const getDB = async (dbName) => {

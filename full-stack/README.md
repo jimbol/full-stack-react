@@ -47,5 +47,47 @@ This installs Git, Node, and Yarn, as well as installing our dependencies.
 ### Starting
 
 ```
-pm2 start "port=80 node --es-module-specifier-resolution=node src/index.js"
+pm2 start "port=3000 node --es-module-specifier-resolution=node src/index.js"
 ```
+
+
+
+# START HERE
+Add the mongo db connection, the api bootup fails without the db present. I'm using [this guide](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-amazon/).
+
+First take the role of a root user.
+```
+sudo su
+```
+
+Add configuration for mongodb in Yum. Create the following file.
+```
+touch /etc/yum.repos.d/mongodb-org-5.0.repo
+```
+
+And modify it...
+```
+vi /etc/yum.repos.d/mongodb-org-5.0.repo
+```
+
+...with the following configuration.
+```
+[mongodb-org-5.0]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/amazon/2/mongodb-org/5.0/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-5.0.asc
+```
+
+
+Then install
+```
+sudo yum install -y mongodb-org
+```
+
+And start mongo!
+```
+sudo systemctl start mongod
+```
+
