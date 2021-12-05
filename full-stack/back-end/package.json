@@ -7,7 +7,8 @@
   "scripts": {
     "start": "nodemon --es-module-specifier-resolution=node src/index.js",
     "server": "pm2 start \"port=5000 node --es-module-specifier-resolution=node src/index.js\"",
-    "restart": "pm2 restart index"
+    "restart": "pm2 restart index",
+    "clear-services": "pm2 delete index"
   },
   "dependencies": {
     "cors": "^2.8.5",
