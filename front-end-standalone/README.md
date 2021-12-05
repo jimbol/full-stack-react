@@ -1,7 +1,15 @@
 # Front-End Standalone
+This application uses React and Redux Toolkit to make a fully functioning Q&A app that can run locally on your machine.
+
+## Practice
+Challenge yourself by trying to create your own front-end application from scratch.
+
+- Create module folder structure
+- Create the router with stubbed pages
+- Design your data structures and create Redux Toolkit slices for your data
+- Create your other components and connect them to your Redux data store.
 
 ## Installation
-
 ### `yarn install`
 Installs dependencies from the package.json file. You may run `npm install` instead.
 
@@ -21,6 +29,7 @@ yarn add uuid
 
 Now you're ready to start building from scratch.
 
+# Original Create React App README
 ## Available Scripts
 
 In the project directory, you can run:
