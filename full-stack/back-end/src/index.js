@@ -14,8 +14,9 @@ app.use(cors({
 }));
 
 const __dirname = path.resolve(path.dirname(''));
-console.log(__dirname);
-app.use(express.static(path.join(__dirname, '../front-end/build')));
+const staticPath = path.join(__dirname, '../front-end/build');
+
+app.use(express.static(staticPath));
 
 Object.values(routes).forEach((route) => {
   console.log(route);
@@ -23,6 +24,10 @@ Object.values(routes).forEach((route) => {
 });
 
 app.get('/api/test', (req, res) => res.send({ success: true }));
+
+app.get('/*', function(req, res) {
+  res.sendFile(`${staticPath}/index.html`);
+});
 
 const start = async () => {
   await db.connect(DB_URL);
