@@ -2,6 +2,7 @@ import express from 'express';
 import * as routes from './routes';
 import * as db from './db/connect';
 import cors from 'cors';
+import path from 'path';
 
 const DB_URL = 'mongodb://127.0.0.1:27017';
 
