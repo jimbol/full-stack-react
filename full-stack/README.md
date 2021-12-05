@@ -1,8 +1,3 @@
-## Set up Netlify
-Netlify is a dead simple way of deploying static sites.
-
-Open Netlify, connect your repository, configue the build, and its ready!
-
 ## Set up EC2 Hosting
 This is where we will host our API and database
 ### Start launching
