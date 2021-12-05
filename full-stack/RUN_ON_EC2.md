@@ -5,7 +5,7 @@ We will host the front-end, back-end, and mongo db on an EC2 instance. This guid
 2. Start MongoDB on an EC2 Instance
 2. Start our application on an EC2 Instance
 
-===
+---
 
 ## Start and connect to an EC2 Instance
 ### Start launching
@@ -39,7 +39,7 @@ ssh -i "~/.ssh/fullstackclass.pem" ec2-user@18.224.52.118
 - You will be prompted to verify the key fingerprint, type "yes" and press "enter"
 - You're in!
 
-===
+---
 
 ## Start MongoDB on an EC2 Instance
 Add the mongo db connection, the api bootup fails without the db present. I'm using [this guide](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-amazon/).
@@ -79,6 +79,8 @@ And start mongo!
 ```
 sudo systemctl start mongod
 ```
+
+---
 ## Start our application on an EC2 Instance
 
 ### Install Dependencies
@@ -114,6 +116,7 @@ sudo iptables -t nat -L
 
 If your have multiple routes for the same port, you'll potentially have issues. You can remove a route by switching the `-A` in the command above with a `-D`.
 
+---
 ## All set!
 
 Now we should be able to hit our application at. `http://ec2-ADDRESS.REGION.compute.amazonaws.com`.

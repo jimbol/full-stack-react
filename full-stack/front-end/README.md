@@ -1,4 +1,10 @@
-# Front-End Standalone
+# Front-End
+
+## Practice
+If you are following the Readme guides, you'll be connecting the front-end to the fully functioning API.
+
+- Create Redux Thunks to Read, Write, Update, and Delete questions using the API
+- Update UI to call Redux Thunks.
 
 ## Installation
 
@@ -21,6 +27,7 @@ yarn add uuid
 
 Now you're ready to start building from scratch.
 
+# Original Create React App README
 ## Available Scripts
 
 In the project directory, you can run:
