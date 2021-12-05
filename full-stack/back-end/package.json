@@ -5,9 +5,9 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "start-dev": "nodemon --es-module-specifier-resolution=node src/index.js",
-    "start": "node --es-module-specifier-resolution=node src/index.js",
-    "keep-alive": "pm2 start src/index.js"
+    "start": "nodemon --es-module-specifier-resolution=node src/index.js",
+    "server": "pm2 start \"port=5000 node --es-module-specifier-resolution=node src/index.js\"",
+    "restart": "pm2 restart index"
   },
   "dependencies": {
     "cors": "^2.8.5",
