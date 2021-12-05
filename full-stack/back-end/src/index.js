@@ -12,6 +12,8 @@ app.use(express.json());
 app.use(cors({
   origin: process.env.client || 'http://localhost:3000',
 }));
+
+const __dirname = path.resolve(path.dirname(''));
 app.use(express.static(path.join(__dirname, '../../front-end/build')));
 
 Object.values(routes).forEach((route) => {
