@@ -1,7 +1,7 @@
 ## Set up Netlify
 Netlify is a dead simple way of deploying static sites.
 
-Open spotify, connect your repository, configue the build, and its ready!
+Open Netlify, connect your repository, configue the build, and its ready!
 
 ## Set up EC2 Hosting
 This is where we will host our API and database
@@ -36,23 +36,7 @@ ssh -i "~/.ssh/fullstackclass.pem" ec2-user@18.224.52.118
 - You will be prompted to verify the key fingerprint, type "yes" and press "enter"
 - You're in!
 
-### Install Dependencies
-Run the install script. In this repo, that lives inside the `full-stack` folder.
-```
-cd full-stack/back-end;
-bash install.sh;
-```
-This installs Git, Node, and Yarn, as well as installing our dependencies.
-
-### Starting
-
-```
-pm2 start "port=3000 node --es-module-specifier-resolution=node src/index.js"
-```
-
-
-
-# START HERE
+## Start mongodb on EC2
 Add the mongo db connection, the api bootup fails without the db present. I'm using [this guide](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-amazon/).
 
 First take the role of a root user.
@@ -90,4 +74,25 @@ And start mongo!
 ```
 sudo systemctl start mongod
 ```
+## Start API
+### Install Dependencies
+Run the install script. In this repo, that lives inside the `full-stack` folder.
+```
+cd full-stack/back-end;
+bash install.sh;
+```
+This installs Git, Node, and Yarn, as well as installing our dependencies.
 
+### Starting
+Start on a private port. We'll use port 5000
+```
+pm2 start "port=5000 client=https://gallant-albattani-8c05b5.netlify.app node --es-module-specifier-resolution=node src/index.js"
+```
+
+Set up routing of traffic from port 80 to port 5000. This way we wont have to specify a port in the url.
+```
+sudo iptables -t nat -L
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 5000
+```
+
+Now we should be able to hit our API. `http://ec2-ADDRESS.REGION.compute.amazonaws.com/test`
