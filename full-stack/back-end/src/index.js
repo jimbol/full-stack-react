@@ -14,7 +14,8 @@ app.use(cors({
 }));
 
 const __dirname = path.resolve(path.dirname(''));
-app.use(express.static(path.join(__dirname, '../../front-end/build')));
+console.log(__dirname);
+app.use(express.static(path.join(__dirname, '../front-end/build')));
 
 Object.values(routes).forEach((route) => {
   console.log(route);
