@@ -1,4 +1,4 @@
-const basePath = 'http://ec2-18-224-52-118.us-east-2.compute.amazonaws.com/api';
+const basePath = '/api';
 
 export const API = async(method, path, payload) => {
   const url = `${basePath}${path}`;

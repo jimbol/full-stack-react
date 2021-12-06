@@ -22,10 +22,6 @@ Start the mongodb service.
 brew services start mongodb-community@5.0
 ```
 
-
-## Run the api
-```yarn start```
-
 ## Tutorial: Basic database commands
 Run `mongo` to connect to the db. Inside the mongo shell run `use test` to switch to the test DB. Then add some test data.
 

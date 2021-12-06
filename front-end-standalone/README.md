@@ -21,10 +21,7 @@ npx create-react-app .
 
 To use the same tools used in class run the following installation scripts.
 ```
-yarn add @reduxjs/toolkit react-redux
-yarn add react-router-dom@6 history@5
-yarn add @mui/material @emotion/react @emotion/styled
-yarn add uuid
+yarn add @reduxjs/toolkit react-redux react-router-dom@6 history@5 @mui/material @emotion/react @emotion/styled uuid
 ```
 
 Now you're ready to start building from scratch.
