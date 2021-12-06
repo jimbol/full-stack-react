@@ -83,6 +83,9 @@ sudo systemctl start mongod
 ---
 ## Start our application on an EC2 Instance
 
+### Pull repository
+Install git and clone our repository on the server.
+
 ### Install Dependencies
 Run the install script. In this repo, that lives inside the `full-stack` folder. Be sure to read `install.sh` to understand what is being installed. This project uses an older version of Node, Node 12, you may need to update the `install.sh` to match the version of Node you are using locally.
 
