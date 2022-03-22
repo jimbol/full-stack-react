@@ -7,6 +7,5 @@ nvm use 12;
 node --version;
 npm install --global yarn
 npm i -g pm2
-yarn install;
 cd ./front-end && yarn install;
 cd ../back-end && yarn install;
