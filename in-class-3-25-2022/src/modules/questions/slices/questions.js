@@ -1,41 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchQuestions, createQuestion, fetchQuestion } from '../requests';
 
 const initialState = {
-  items: {
-    1: {
-      id: 1,
-      text: 'How tall is Mt. Everest?',
-      answers: {
-        11: {
-          id: 11,
-          text: 'Really tall'
-        }
-      }
-    },
-    2: {
-      id: 2,
-      text: 'When was javascript create?',
-    },
-    3: {
-      id: 3,
-      text: 'Who am I?',
-    },
+  loading: false,
+  items: {}
+};
+
+const addQuestions = (state, action) => {
+  state.items = {
+    ...state.items,
+    ...action.payload.reduce((acc, question) => {
+      acc[question.id] = question;
+      return acc;
+    }, {}),
   }
+  state.loading = false;
+};
+
+const setLoading = (state) => {
+  state.loading = true;
 };
 
 export const questionSlice = createSlice({
   name: 'questions',
   initialState,
   reducers: {
-    addQuestions: (state, action) => {
-      state.items = {
-        ...state.items,
-        ...action.payload.reduce((acc, question) => {
-          acc[question.id] = question;
-          return acc;
-        }, {}),
-      }
-    },
+    addQuestions,
     addAnswer: (state, action) => {
       const { questionId, answer } = action.payload;
       const answers = state.items[questionId].answers || {};
@@ -51,6 +41,16 @@ export const questionSlice = createSlice({
       const upvotes = (state.items[questionId].upvotes || 0) + 1;
       state.items[questionId].upvotes = upvotes;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchQuestions.fulfilled, addQuestions);
+    builder.addCase(fetchQuestions.pending, setLoading);
+
+    builder.addCase(createQuestion.fulfilled, addQuestions);
+    builder.addCase(createQuestion.pending, setLoading);
+
+    builder.addCase(fetchQuestion.fulfilled, addQuestions);
+    builder.addCase(fetchQuestion.pending, setLoading);
   }
 });
 

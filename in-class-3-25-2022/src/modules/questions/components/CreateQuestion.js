@@ -1,10 +1,9 @@
 import { Typography, TextField, Button, Container } from "@mui/material";
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
-import { v4 as uuid } from 'uuid';
 import { useNavigate } from "react-router";
 
-import { questionActions } from '../slices';
+import { createQuestion } from '../requests';
 
 export const CreateQuestion = () => {
   const [newQuestion, setNewQuestion] = useState('');
@@ -12,13 +11,11 @@ export const CreateQuestion = () => {
   const navigate = useNavigate();
 
   const saveQuestion = () => {
-    const id = uuid();
-    dispatch(questionActions.addQuestions([{
-      id,
-      text: newQuestion,
-    }]));
+    dispatch(createQuestion({
+      questionText: newQuestion,
+      navigate,
+    }));
     setNewQuestion('');
-    navigate(`/question/${id}`);
   }
 
   return (

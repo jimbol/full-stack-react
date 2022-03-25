@@ -1,10 +1,12 @@
-import { data } from '../db/data';
+import * as Question from '../db/questionModel';
 
 export const getQuestions = {
   method: 'get',
   path: '/questions',
-  handler: (req, res) => {
+  handler: async (req, res) => {
+    const questions = await Question.getAll();
+
     res.status(200);
-    res.send(data);
-  }
+    res.send({ questions });
+  },
 };

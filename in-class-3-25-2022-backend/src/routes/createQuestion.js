@@ -1,20 +1,17 @@
-import { data } from '../db/data';
-import { v4 as uuid } from 'uuid';
+import * as Question from '../db/questionModel';
 
 export const createQuestion = {
   method: 'post',
   path: '/question',
-  handler: (req, res) => {
+  handler: async (req, res) => {
     const newQuestion = req.body.question;
-    newQuestion.id = uuid();
+    const { insertedId } = await Question.insertOne(newQuestion);
 
-    data.questions[newQuestion.id] = newQuestion;
-
+    const questions = await Question.getAll();
     res.status(200);
     res.send({
-      questions: {
-        [newQuestion.id]: newQuestion
-      },
+      questions,
+      insertedId,
     });
   },
 };

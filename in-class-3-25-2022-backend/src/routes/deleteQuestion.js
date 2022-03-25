@@ -1,17 +1,11 @@
-import { data } from '../db/data';
+import * as Question from '../db/questionModel';
 
 export const deleteQuestion = {
-  method: 'del',
+  method: 'delete',
   path: '/question/:id',
-  handler: (req, res) => {
+  handler: async (req, res) => {
     const id = req.params.id;
-    if (!data.questions[id]) {
-      return res.status(404).send({
-        message: 'That question does not exit.'
-      });
-    }
-
-    delete data.questions[id];
+    await Question.deleteOne(id);
 
     res.status(200).send({
       deleted: true,
