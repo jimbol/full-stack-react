@@ -1,0 +1,16 @@
+{
+  "name": "in-class-3-25-2022-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node --es-module-specifier-resolution=node src/index.js",
+    "start-dev": "nodemon --es-module-specifier-resolution=node src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "uuid": "^8.3.2"
+  }
+}

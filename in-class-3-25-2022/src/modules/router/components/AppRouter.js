@@ -1,12 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import { HomePage } from '../../homepage';
+import { CreateQuestion, Question } from '../../questions';
 
 export const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/question/:questionId" element={<h1>Question</h1>} />
-      <Route path="/create-question" element={<h1>Create Question</h1>} />
+      <Route path="/question/:questionId" element={<Question />} />
+      <Route path="/create-question" element={<CreateQuestion />} />
       <Route
         path="*"
         element={<h1>There is nothing here</h1>}
